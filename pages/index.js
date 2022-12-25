@@ -17,7 +17,7 @@ function Home() {
         const profit = exchange2.price - exchange1.price
         if (exchange1.exchangeName !== exchange2.exchangeName && profit > 0) {
           AddOpportunity(
-            `<b>Arbitrage opportunity</b> for <b>${currency}</b> : buy from <b>${exchange1.exchangeName.toUpperCase()}</b> and sell on <b>${exchange2.exchangeName.toUpperCase()}</b> for a profit of <b>${profit} USD</b>.`,
+            `<b>Arbitrage opportunity</b> for <b>${currency.toUpperCase()}</b> : buy from <b>${exchange1.exchangeName.toUpperCase()}</b> and sell on <b>${exchange2.exchangeName.toUpperCase()}</b> for a profit of <b>${profit} USD</b>.`,
           )
         }
       }

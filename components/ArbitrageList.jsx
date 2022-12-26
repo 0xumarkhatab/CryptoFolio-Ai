@@ -8,14 +8,15 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { HStack } from "@chakra-ui/react";
+import { useState } from "react";
 import CryptoItem from "./CryptoItem";
+import PlatformModal from "./PlatformModal";
 const ArbitrageList = ({ data, opportunitiesCount }) => {
-  let opportunities = Object.keys(data);
+  const [selectedAsset, setSelectedAsset] = useState(null);
   console.log({
-    opportunities,
-    data,
-  });
-
+    selectedAsset
+  })
+  let opportunities = Object.keys(data);
   return (
     <Center>
       <VStack spacing={10}>
@@ -23,13 +24,14 @@ const ArbitrageList = ({ data, opportunitiesCount }) => {
           <HStack alignItems={"center"}>
             <Heading fontSize={"60"} fontWeight={"900"}>
               Total Opportunities{" "}
-              
             </Heading>
-            <Text fontSize={"3em"} color={"green"}>{opportunitiesCount}</Text>
+            <Text fontSize={"3em"} color={"green"}>
+              {opportunitiesCount}
+            </Text>
           </HStack>
           <Box width={"30vw"}>
             {" "}
-            <hr borderColor="black" borderWidth="61px" />
+            <hr bordercolor="black" borderwidth="61px" />
           </Box>
         </VStack>
 
@@ -41,12 +43,21 @@ const ArbitrageList = ({ data, opportunitiesCount }) => {
                   key={key + "item"}
                   name={key}
                   count={data[key].length}
+                  onClick={() => {
+                    setSelectedAsset({
+                      name: key,
+                      opportunities: data[key],
+                    });
+                  }}
                 />
               </WrapItem>
             ))}
           </Wrap>
         )}
       </VStack>
+      {selectedAsset && (
+        <PlatformModal selector={setSelectedAsset} data={selectedAsset} />
+      )}
     </Center>
   );
 };

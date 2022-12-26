@@ -1,6 +1,6 @@
 import axios from "axios";
 import { CachedData } from "./Cache";
-export const exchanges ="binance,bitfinex,bitstamp,coinbase,gemini,kraken,huobi,bittrex,poloniex,kex,hitbtc,cex,coinbase-pro";
+export const exchanges ="binance,bitfinex,bitstamp,coinbase,gemini,kraken,huobi,bittrex,poloniex,hitbtc,cex,coinbase-pro";
 export const exchangesList = exchanges.split(",");
 export const currencies = "ethereum,litecoin,ripple,eos,chainlink,binance-coin,tezos,zcash,maker,dai,usd-coin,wrapped-bitcoin,uniswap,compound,tether,binance-usd";
 export const currenciesList = currencies.split(",");

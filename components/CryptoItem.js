@@ -8,24 +8,23 @@ import {
   exchangesList,
 } from "./data/fetchData";
 
-const CryptoItem = ({ name, count }) => {
+const CryptoItem = ({ name, count, onClick }) => {
   let name_ = name;
-  console.log("name is ", name_);
 
   if (currenciesList.includes(name_)) {
     name_ = currencySymbolMap[name_];
-    console.log("coin is ", name_);
   } else {
     console.log(name, "is not crypto in ", currenciesList);
+    return <></>;
   }
   let iconUrl = `https://raw.githubusercontent.com/umaresso/cryptocurrency-icons/master/128/color/${name_}.png`;
 
   return (
-    <Box cursor="pointer" position="relative">
+    <Box onClick={onClick} cursor="pointer" position="relative">
       <Image width={20} src={iconUrl} alt={name_} />
       {count > 0 && (
         <Badge
-        colorScheme={"red"}
+          colorScheme={"red"}
           variant="solid"
           fontSize="1em"
           position="absolute"

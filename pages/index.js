@@ -20,7 +20,7 @@ function Home() {
     []
   );
 
-  function findArbitrage(ExchangePrices) {
+  function findArbitrage(currency,ExchangePrices) {
     let opportunitiesList = [];
     let totalOpportunities = 0;
     for (const exchange1 of ExchangePrices) {
@@ -30,7 +30,8 @@ function Home() {
           let opportunity = {
             source: exchange1.exchangeName,
             sink: exchange2.exchangeName,
-            price: profit,
+            price: profit.toFixed(2),
+            currency:currency,
           };
           opportunitiesList.push(opportunity);
 
@@ -83,7 +84,7 @@ function Home() {
     let opportunities = [];
     for (const currency of currenciesArray) {
       let ExchangePrices = _prices[currency];
-      let list = findArbitrage(ExchangePrices);
+      let list = findArbitrage(currency,ExchangePrices);
       opportunities[currency] = list;
     }
     // console.log("full opportunities are ", opportunities);

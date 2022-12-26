@@ -33,10 +33,6 @@ let cachedData = [];
     price: 240,
   },
   {
-    exchangeName: "kex",
-    price: 240 
-  },
-  {
     exchangeName: "hitbtc",
     price: 240 
   },
@@ -85,10 +81,6 @@ let cachedData = [];
     {
       exchangeName: "poloniex",
       price: 90.001,
-    },
-    {
-      exchangeName: "kex",
-      price: 1.001,
     },
     {
       exchangeName: "hitbtc",
@@ -141,10 +133,6 @@ let cachedData = [];
       price: 3,
     },
     {
-      exchangeName: "kex",
-      price: 5.97,
-    },
-    {
       exchangeName: "hitbtc",
       price: 5.97,
     },
@@ -190,10 +178,6 @@ let cachedData = [];
     {
       exchangeName: "poloniex",
       price: 12 
-    },
-    {
-      exchangeName: "kex",
-      price: 54
     },
     {
       exchangeName: "hitbtc",
@@ -254,11 +238,6 @@ let cachedData = [];
 
     },
     {
-      exchangeName: "kex",
-      price:1
-
-    },
-    {
       exchangeName: "hitbtc",
       price:1
 
@@ -312,10 +291,6 @@ let cachedData = [];
       price: 9.001,
     },
     {
-      exchangeName: "kex",
-      price: 13.001,
-    },
-    {
       exchangeName: "hitbtc",
       price: 12.001,
     },
@@ -364,10 +339,6 @@ let cachedData = [];
     {
       exchangeName: "poloniex",
       price: 0.879591,
-    },
-    {
-      exchangeName: "kex",
-      price: 4.879591,
     },
     {
       exchangeName: "hitbtc",
@@ -420,10 +391,6 @@ let cachedData = [];
       price: 108.97,
     },
     {
-      exchangeName: "kex",
-      price: 123.97,
-    },
-    {
       exchangeName: "hitbtc",
       price: 8.97,
     },
@@ -472,10 +439,6 @@ let cachedData = [];
     {
       exchangeName: "poloniex",
       price: 540,
-    },
-    {
-      exchangeName: "kex",
-      price: 240,
     },
     {
       exchangeName: "hitbtc",
@@ -528,10 +491,6 @@ let cachedData = [];
       price: 50,
     },
     {
-      exchangeName: "kex",
-      price: 12,
-    },
-    {
       exchangeName: "hitbtc",
       price: 15,
     },
@@ -580,10 +539,6 @@ let cachedData = [];
     {
       exchangeName: "poloniex",
       price: 12,
-    },
-    {
-      exchangeName: "kex",
-      price: 5424,
     },
     {
       exchangeName: "hitbtc",
@@ -636,10 +591,6 @@ let cachedData = [];
       price: 56,
     },
     {
-      exchangeName: "kex",
-      price: 42,
-    },
-    {
       exchangeName: "hitbtc",
       price: 345,
     },
@@ -688,10 +639,6 @@ let cachedData = [];
     {
       exchangeName: "poloniex",
       price: 55.17567,
-    },
-    {
-      exchangeName: "kex",
-      price: 556.17,
     },
     {
       exchangeName: "hitbtc",
@@ -744,10 +691,6 @@ let cachedData = [];
       price: 561.001,
     },
     {
-      exchangeName: "kex",
-      price: 4431.001,
-    },
-    {
       exchangeName: "hitbtc",
       price: 331.001,
     },
@@ -795,10 +738,6 @@ let cachedData = [];
     },
     {
       exchangeName: "poloniex",
-      price: 11833.47,
-    },
-    {
-      exchangeName: "kex",
       price: 11833.47,
     },
     {
@@ -850,10 +789,6 @@ let cachedData = [];
     {
       exchangeName: "poloniex",
       price: 775,
-    },
-    {
-      exchangeName: "kex",
-      price: 75,
     },
     {
       exchangeName: "hitbtc",

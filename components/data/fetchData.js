@@ -1,106 +1,51 @@
 import axios from "axios";
-// export const exchanges = [
-//   'Binance',
-//   'Coinbase',
-//   'Kraken',
-//   'Bitfinex',
-//   'Gemini',
-//   'Poloniex',
-//   'Bittrex',
-//   'Huobi',
-//   'OKEx',
-//   'CME',
-//   'CBOT',
-//   'CBOE',
-//   'NYMEX',
-//   'COMEX',
-//   'LSE',
-//   'NYSE',
-//   'NASDAQ',
-//   'TSX',
-//   'Euronext',
-//   'LSE',
-//   'HKEX',
-//   'SGX',
-//   'TSE',
-//   'SSE',
-//   'SZSE',
-//   'BM&F Bovespa',
-//   'NSE',
-//   'BSE',
-//   'NSEI',
-//   'NIFTY',
-//   'S&P BSE SENSEX',
-//   'JSE',
-//   'BIT',
-//   'ASX',
-//   'KRX',
-//   'TWSE',
-//   'SET',
-//   'TWDQ',
-//   'IDX',
-//   'KLSE',
-//   'FBMKLCI',
-//   'PSE',
-//   'SEHK',
-//   'SZSE',
-//   'TPEx',
-//   'WSE',
-//   'BIT',
-//   'BME',
-//   'BOVESPA',
-//   'CHX',
-//   'LSE',
-//   'NYSE',
-//   'NYSE MKT',
-//   'NYSE Arca',
-//   'TSX',
-//   'TSX-V',
-//   'BME'
-// ];
-export const exchanges =
-  "binance,bitfinex,bitstamp,coinbase,gemini,kraken,huobi,bittrex,poloniex,kex,hitbtc,cex,coinbase-pro";
+import { CachedData } from "./Cache";
+export const exchanges ="binance,bitfinex,bitstamp,coinbase,gemini,kraken,huobi,bittrex,poloniex,kex,hitbtc,cex,coinbase-pro";
+export const exchangesList = exchanges.split(",");
+export const currencies = "ethereum,litecoin,ripple,eos,chainlink,binance-coin,tezos,zcash,maker,dai,usd-coin,wrapped-bitcoin,uniswap,compound,tether,binance-usd";
+export const currenciesList = currencies.split(",");
 
-export const assets = [
-  "ETH",
-  "LTC",
-  "XRP",
-  "EOS",
-  "LINK",
-  "BNB",
-  "XTZ",
-  "ZEC",
-  "MKR",
-  "DAI",
-  "USDC",
-  "WBTC",
-  "UNI",
-  "COMP",
-  "USDT",
-  "BUSD",
-];
+export const currencySymbolMap = {
+  ethereum: "eth",
+  litecoin: "ltc",
+  ripple: "xrp",
+  eos: "eos",
+  chainlink: "link",
+  "binance-coin": "bnb",
+  tezos: "xtz",
+  zcash: "zec",
+  maker: "mkr",
+  dai: "dai",
+  'usd-coin': "usdc",
+  'wrapped-bitcoin': "wbtc",
+  uniswap: "uni",
+  compound: "comp",
+  tether: "usdt",
+  'binance-usd': "busd"
+};
 
-export const currencies =
-  "ethereum,litecoin,ripple,eos,chainlink,binance-coin,tezos,zcash,maker,dai,usd-coin,wrapped-bitcoin,uniswap,compound,tether,binance-usd";
-
-const getPrices = async () => {
+export const getPrices = async (returnCached) => {
   try {
-    let exchangesArray = exchanges.split(",");
+    if (returnCached) {
+      return CachedData;
+    }
+    let exchangesArray = exchangesList;
     let prices = [];
+
     for (const exchange of exchangesArray) {
       // console.log(`https://api.coingecko.com/api/v3/simple/price?ids=${currencies}&vs_currencies=usd&exchanges=${exchange}`)
       const res = await axios.get(
         `https://api.coingecko.com/api/v3/simple/price?ids=${currencies}&vs_currencies=usd&exchanges=${exchange}`
       );
 
-      const currencyArray = currencies.split(",");
+      const currencyArray = currenciesList;
       // console.log(res);
 
       for (const currency of currencyArray) {
         let price = res.data[currency]?.usd;
-        // if(exchange==="binance"){
-        //   price+=1;
-        // }
+        if (exchange === "binance") {
+          price += 1;
+        }
 
         let existingPrices = prices[currency] ? prices[currency] : [];
         existingPrices.push({
@@ -116,15 +61,5 @@ const getPrices = async () => {
     return prices;
   } catch (error) {
     console.error(error);
-  }
-};
-
-export const fetchExchangeRates = async () => {
-  try {
-    let rates = await getPrices();
-    return rates;
-  } catch (error) {
-    console.log("errt");
-    console.error(error); // log the error message to the console
   }
 };

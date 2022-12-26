@@ -13,12 +13,12 @@ import {
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import NavbarLink from './NavbarLink'
 const Navbar = () => (
-  <Center position={'absolute'} top={'2vh'} left={['10vw', '10vw', '30vw']}>
+  <Center position={'absolute'} top={'2vh'} left={['2vw', '5vw','5vw', '30vw']} right={['2vw', '5vw','5vw', '30vw']}>
     <Box
       border="4px solid"
       borderRadius="md"
       animation="gradient"
-      animationDuration="3s"
+      animationduration="3s"
       bg="black"
       px={4}
       py={2}

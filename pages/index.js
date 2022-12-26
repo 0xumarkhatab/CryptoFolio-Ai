@@ -1,81 +1,119 @@
-import { fetchExchangeRates, currencies } from '../components/data/fetchData'
-import { useEffect, useState } from 'react'
-import Navbar from '../components/Navbar'
-import Introduction from '../components/Introduction'
+import {
+  getPrices,
+  currenciesList,
+  exchangesList,
+} from "../components/data/fetchData";
+import { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
+import Introduction from "../components/Introduction";
+import { Heading } from "@chakra-ui/react";
+import ArbitrageList from "../components/ArbitrageList";
 
 function Home() {
-  const [currentArbitrageCurrency, setCurrentArbitrageCurrency] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [prices, setPrices] = useState(null)
-  const [
-    arbitrageOpportunitiesCount,
-    setArbitrageOpportunitiesCount,
-  ] = useState(0)
+  const [currentArbitrageCurrency, setCurrentArbitrageCurrency] =
+    useState(null);
+  const [loading, setLoading] = useState(true);
+  const [prices, setPrices] = useState(null);
+  const [arbitrageOpportunitiesCount, setArbitrageOpportunitiesCount] =
+    useState(0);
+  const [arbitrageOpportunitiesList, setArbitrageOpportunitiesList] = useState(
+    []
+  );
 
-  async function findArbitrage(currency, prices) {
-    console.log('arbitrage for ', currency)
-    for (const exchange1 of prices) {
-      for (const exchange2 of prices) {
-        const profit = exchange2.price - exchange1.price
+  function findArbitrage(ExchangePrices) {
+    let opportunitiesList = [];
+    let totalOpportunities = 0;
+    for (const exchange1 of ExchangePrices) {
+      for (const exchange2 of ExchangePrices) {
+        const profit = exchange2.price - exchange1.price;
         if (exchange1.exchangeName !== exchange2.exchangeName && profit > 0) {
-          AddOpportunity(
-            `<b>Arbitrage opportunity</b> for <b>${currency.toUpperCase()}</b> : buy from <b>${exchange1.exchangeName.toUpperCase()}</b> and sell on <b>${exchange2.exchangeName.toUpperCase()}</b> for a profit of <b>${profit} USD</b>.`,
-          )
+          let opportunity = {
+            source: exchange1.exchangeName,
+            sink: exchange2.exchangeName,
+            price: profit,
+          };
+          opportunitiesList.push(opportunity);
+
+          totalOpportunities++;
+          // AddOpportunity(
+          //   `<b>Arbitrage opportunity</b> for <b>${currency.toUpperCase()}</b> : buy from <b>${exchange1.exchangeName.toUpperCase()}</b> and sell on <b>${exchange2.exchangeName.toUpperCase()}</b> for a profit of <b>${profit} USD</b>.`
+          // );
         }
       }
     }
+    setArbitrageOpportunitiesCount((prev) => prev + totalOpportunities);
+    return opportunitiesList;
   }
 
-  async function TrainModel() {
-    let _prices = null
-    _prices = await fetchExchangeRates()
-    if (!_prices) {
-      console.log('Please refresh the page')
-      setLoading(false)
-      return
-    }
-    console.log(_prices)
-    setPrices(_prices)
-
-    let currenciesArray = currencies.split(',')
+  function CleanPricesData(theData) {
+    let newData = [];
+    let currenciesArray = currenciesList;
+    let totalExchanges = exchangesList.length;
+    let percentExchangesToAllow = 0.5 * totalExchanges;
     for (const currency of currenciesArray) {
-      let ExchangesPrices = _prices[currency]
-      await findArbitrage(currency, ExchangesPrices)
+      let ExchangePrices = theData[currency];
+      let exchangePricesPresent = 0;
+      ExchangePrices.map((item) => {
+        if (item.price) {
+          exchangePricesPresent++;
+        }
+      });
+
+      if (exchangePricesPresent >= percentExchangesToAllow) {
+        newData[currency] = ExchangePrices;
+      }
     }
+
+    return newData;
+  }
+  async function TrainModel() {
+    let _prices = null;
+    _prices = await getPrices(true); // return cached data
+
+    if (!_prices) {
+      console.log("Please refresh the page");
+      setLoading(false);
+      return;
+    }
+    _prices = CleanPricesData(_prices);
+    setPrices(_prices);
+    setLoading(false);
+
+    let currenciesArray = currenciesList;
+    let opportunities = [];
+    for (const currency of currenciesArray) {
+      let ExchangePrices = _prices[currency];
+      let list = findArbitrage(ExchangePrices);
+      opportunities[currency] = list;
+    }
+    // console.log("full opportunities are ", opportunities);
+    setArbitrageOpportunitiesList(opportunities);
   }
 
   function AddOpportunity(opportunity) {
-    setArbitrageOpportunitiesCount((prev) => prev + 1)
-    let parentElement = document.getElementById('opportunities')
-    const childElement = document.createElement('p')
-    childElement.innerHTML = opportunity
-    parentElement.appendChild(childElement)
+    setArbitrageOpportunitiesCount((prev) => prev + 1);
+    let parentElement = document.getElementById("opportunities");
+    const childElement = document.createElement("p");
+    childElement.innerHTML = opportunity;
+    parentElement.appendChild(childElement);
   }
 
   useEffect(() => {
     // setInterval(() => {
-    TrainModel()
+    TrainModel();
 
     // }, 6000);
-  }, [])
+  }, []);
 
   return (
     <>
-    <Navbar/>
-    <Introduction/>
-      <div>
-        <h1>DeFi Arbitrage Platform </h1>
-      </div>
+      <Navbar />
+      <Introduction />
 
       {!prices && loading && <h2>Loading Prices ....</h2>}
-      <div>
-        <h2>Finding Arbitrage Opportunities</h2>
-        <h3>Found {arbitrageOpportunitiesCount}</h3>
-      </div>
-
-      <div id="opportunities"></div>
+      <ArbitrageList data={arbitrageOpportunitiesList} opportunitiesCount={arbitrageOpportunitiesCount} />
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;

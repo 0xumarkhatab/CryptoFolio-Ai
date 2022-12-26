@@ -14,12 +14,16 @@
     "@chakra-ui/react": "^2.4.4",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@nivo/generators": "^0.80.0",
+    "@nivo/sunburst": "^0.80.0",
     "axios": "^1.2.1",
+    "d3": "^7.8.0",
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.1",
     "framer-motion": "^8.0.2",
     "next": "13.1.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-zoomable-sunburst-d3-v4": "^0.1.8"
   }
 }

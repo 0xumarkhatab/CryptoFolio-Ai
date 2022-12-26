@@ -98,9 +98,10 @@ const getPrices = async () => {
 
       for (const currency of currencyArray) {
         let price = res.data[currency]?.usd;
-        if(exchange==="binance"){
-          price+=1;
-        }
+        // if(exchange==="binance"){
+        //   price+=1;
+        // }
+
         let existingPrices = prices[currency] ? prices[currency] : [];
         existingPrices.push({
           exchangeName: exchange,

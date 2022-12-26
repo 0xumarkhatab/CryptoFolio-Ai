@@ -1,5 +1,7 @@
 import { fetchExchangeRates, currencies } from '../components/data/fetchData'
 import { useEffect, useState } from 'react'
+import Navbar from '../components/Navbar'
+import Introduction from '../components/Introduction'
 
 function Home() {
   const [currentArbitrageCurrency, setCurrentArbitrageCurrency] = useState(null)
@@ -59,6 +61,8 @@ function Home() {
 
   return (
     <>
+    <Navbar/>
+    <Introduction/>
       <div>
         <h1>DeFi Arbitrage Platform </h1>
       </div>

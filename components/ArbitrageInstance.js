@@ -11,7 +11,7 @@ function ArbitrageInstance({ opportunity }) {
   let price = opportunity.price;
   let currency = opportunity.currency;
   return (
-    <Tr>
+    <Tr  >
       <Td>
         {" "}
         <HStack align={"center"} spacing={5}>
@@ -21,12 +21,14 @@ function ArbitrageInstance({ opportunity }) {
             objectFit={"contain"}
             src={sourceLogo}
           />
-          <Text>+</Text>
+          <Text >+</Text>
           <Image
             borderRadius={"20px"}
             height={"30px"}
             objectFit={"contain"}
             src={sinkLogo}
+            
+
           />
         </HStack>
       </Td>

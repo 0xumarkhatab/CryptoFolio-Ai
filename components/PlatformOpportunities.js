@@ -27,17 +27,17 @@ function PlatformOpportunities({ name, opportunities }) {
     <VStack>
       <HStack>
         {" "}
-        <Text>{name.toUpperCase()}</Text>
+        <Heading>{name.toUpperCase()}</Heading>
         <Img height={"30px"} src={currencyLogo} />
       </HStack>
-      <TableContainer>
-        <Table width={"40vw"} size={"md"} variant="striped" colorScheme="cyan">
+      <TableContainer  >
+        <Table  borderRadius={"20px"} width={"40vw"} size={"md"} variant="simple" background={"black"} color={"white"} >
           <TableCaption>Arbitrage Opportunities</TableCaption>
-          <Thead>
+          <Thead padding={"20px"}>
             <Tr>
-              <Th>Source + Sink</Th>
-              <Th>Per Coin Profit</Th>
-              <Th display={["none", "none", "flex", "flex"]}>Estimation</Th>
+              <Th color={"white"} >Source + Sink</Th>
+              <Th color={"white"}>Per Coin Profit</Th>
+              <Th display={["none", "none", "flex", "flex"]} color={"white"}>Estimation</Th>
             </Tr>
           </Thead>
           <Tbody>

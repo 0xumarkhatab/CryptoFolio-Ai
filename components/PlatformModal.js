@@ -27,9 +27,11 @@ function PlatformModal({ data, selector }) {
         onClose={()=>{
           selector(null);
         }}
+        bg={"black"}
+        color={"white"}
       >
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent  >
           <ModalHeader>Arbitrage Details</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -42,7 +44,7 @@ function PlatformModal({ data, selector }) {
 
           <ModalFooter>
             <Button
-              colorScheme="blue"
+              colorScheme="blackAlpha"
               mr={3}
               onClick={() => {
                 setIsOpen(false);

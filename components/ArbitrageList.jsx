@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   Center,
   Heading,
@@ -14,19 +15,35 @@ import PlatformModal from "./PlatformModal";
 const ArbitrageList = ({ data, opportunitiesCount }) => {
   const [selectedAsset, setSelectedAsset] = useState(null);
 
-  
   let opportunities = Object.keys(data);
   return (
-    <Center>
+    <Center
+      borderTopColor="grey"
+      borderTop="40vw"
+      width={"100vw"}
+      height={"fit-content"}
+      minH={"100vh"}
+      bg="black"
+      color={"white"}
+    >
       <VStack spacing={10}>
         <VStack spacing={10}>
-          <HStack alignItems={"center"}>
+          <HStack  >
             <Heading fontSize={"60"} fontWeight={"900"}>
               Total Opportunities{" "}
             </Heading>
-            <Text fontSize={"3em"} color={"green"}>
+            <Heading
+               color={"white"}
+               fontSize={"30"}
+               padding={"10px"}
+               marginTop={"30px"}
+               background={"red.500"}
+               borderRadius={"20px"}
+               
+               
+            >
               {opportunitiesCount}
-            </Text>
+            </Heading>
           </HStack>
           <Box width={"30vw"}>
             {" "}

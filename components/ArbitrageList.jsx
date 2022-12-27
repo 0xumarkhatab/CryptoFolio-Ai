@@ -13,9 +13,8 @@ import CryptoItem from "./CryptoItem";
 import PlatformModal from "./PlatformModal";
 const ArbitrageList = ({ data, opportunitiesCount }) => {
   const [selectedAsset, setSelectedAsset] = useState(null);
-  console.log({
-    selectedAsset
-  })
+
+  
   let opportunities = Object.keys(data);
   return (
     <Center>

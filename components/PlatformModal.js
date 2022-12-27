@@ -14,20 +14,19 @@ import { useEffect, useState } from "react";
 import PlatformOpportunities from "./PlatformOpportunities";
 
 function PlatformModal({ data, selector }) {
-  const { isOpen,onOpen, onClose } = useDisclosure();
+  const [isOpen, setIsOpen] = useState(true);
+  let name = data?.name;
 
-  let name = data.name;
-  console.log("inside modal ", { data, selector });
-  useEffect(() => {
-    onOpen()
-  }, []);
+
   return (
     <>
       <Modal
         size={"6xl"}
         blockScrollOnMount={false}
         isOpen={isOpen}
-        onClose={onClose}
+        onClose={()=>{
+          selector(null);
+        }}
       >
         <ModalOverlay />
         <ModalContent>
@@ -46,9 +45,7 @@ function PlatformModal({ data, selector }) {
               colorScheme="blue"
               mr={3}
               onClick={() => {
-                onClose();
-                
-                isOpen(false);
+                setIsOpen(false);
                 selector(null);
                 
               }}

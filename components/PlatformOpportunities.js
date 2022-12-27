@@ -1,11 +1,13 @@
 import {
   Heading,
   HStack,
+  Img,
   Table,
   TableCaption,
   TableContainer,
   Tbody,
   Td,
+  Text,
   Tfoot,
   Th,
   Thead,
@@ -14,21 +16,28 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import ArbitrageInstance from "./ArbitrageInstance";
-
+import {currencySymbolMap, symbolToCurrencyMap} from "../components/data/fetchData"
 function PlatformOpportunities({ name, opportunities }) {
   let keys = Object.keys(opportunities);
+  
+  let currencySymbol = currencySymbolMap[name];
+  let currencyLogo = `https://raw.githubusercontent.com/umaresso/cryptocurrency-icons/master/128/color/${currencySymbol}.png`;
 
   return (
     <VStack>
-      <Heading>{name.toUpperCase()}</Heading>
+      <HStack>
+        {" "}
+        <Text>{name.toUpperCase()}</Text>
+        <Img height={"30px"} src={currencyLogo} />
+      </HStack>
       <TableContainer>
-        <Table width={"40vw"} size={"md"} variant="striped" colorScheme="teal">
+        <Table width={"40vw"} size={"md"} variant="striped" colorScheme="cyan">
           <TableCaption>Arbitrage Opportunities</TableCaption>
           <Thead>
             <Tr>
               <Th>Source + Sink</Th>
-              <Th>Per Unit Profit</Th>
-              <Th>Estimation</Th>
+              <Th>Per Coin Profit</Th>
+              <Th display={["none", "none", "flex", "flex"]}>Estimation</Th>
             </Tr>
           </Thead>
           <Tbody>
@@ -42,13 +51,6 @@ function PlatformOpportunities({ name, opportunities }) {
                 );
               })}
           </Tbody>
-          <Tfoot>
-            <Tr>
-              <Th>Source + Sink</Th>
-              <Th>Per Unit Profit</Th>
-              <Th>Estimation</Th>
-            </Tr>
-          </Tfoot>
         </Table>
       </TableContainer>
     </VStack>

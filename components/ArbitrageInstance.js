@@ -31,7 +31,7 @@ function ArbitrageInstance({ opportunity }) {
         </HStack>
       </Td>
       <Td>{price} USD</Td>
-      <Td>
+      <Td display={["none", "none", "flex", "flex"]}>
         <HStack spacing={2}>
           <Text>10</Text>
           <Image borderRadius={"50%"} height={"30px"} src={currencyLogo} />

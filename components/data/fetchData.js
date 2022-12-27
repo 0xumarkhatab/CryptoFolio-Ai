@@ -4,7 +4,24 @@ export const exchanges ="binance,bitfinex,bitstamp,coinbase,gemini,kraken,huobi,
 export const exchangesList = exchanges.split(",");
 export const currencies = "ethereum,litecoin,ripple,eos,chainlink,binance-coin,tezos,zcash,maker,dai,usd-coin,wrapped-bitcoin,uniswap,compound,tether,binance-usd";
 export const currenciesList = currencies.split(",");
-
+export const symbolToCurrencyMap = {
+  eth: "ethereum",
+  ltc: "litecoin",
+  xrp: "ripple",
+  eos: "eos",
+  link: "chainlink",
+  bnb: "binance-coin",
+  xtz: "tezos",
+  zec: "zcash",
+  mkr: "maker",
+  dai: "dai",
+  usdc: "usd-coin",
+  wbtc: "wrapped-bitcoin",
+  uni: "uniswap",
+  comp: "compound",
+  usdt: "tether",
+  busd: "binance-usd"
+  };
 export const currencySymbolMap = {
   ethereum: "eth",
   litecoin: "ltc",

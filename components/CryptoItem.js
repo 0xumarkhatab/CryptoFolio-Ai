@@ -14,7 +14,6 @@ const CryptoItem = ({ name, count, onClick }) => {
   if (currenciesList.includes(name_)) {
     name_ = currencySymbolMap[name_];
   } else {
-    console.log(name, "is not crypto in ", currenciesList);
     return <></>;
   }
   let iconUrl = `https://raw.githubusercontent.com/umaresso/cryptocurrency-icons/master/128/color/${name_}.png`;

@@ -29,12 +29,12 @@ const ArbitrageList = ({ data, opportunitiesCount }) => {
       <VStack spacing={10}>
         <VStack spacing={10}>
           <HStack  >
-            <Heading fontSize={"60"} fontWeight={"900"}>
+            <Heading fontSize={["20","40","60"]} fontWeight={"900"}>
               Total Opportunities{" "}
             </Heading>
             <Heading
                color={"white"}
-               fontSize={"30"}
+               fontSize={["10","20","30"]}
                padding={"10px"}
                marginTop={"30px"}
                background={"red.500"}
@@ -52,7 +52,7 @@ const ArbitrageList = ({ data, opportunitiesCount }) => {
         </VStack>
 
         {opportunities.length > 0 && (
-          <Wrap paddingTop={"5vh"} spacing={20} width={"40vw"}>
+          <Wrap paddingTop={"5vh"} spacing={[5,10,20]} width={["80vw","60vw","40vw"]}>
             {opportunities.map((key) => (
               <WrapItem key={"wrap " + key}>
                 <CryptoItem

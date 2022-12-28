@@ -8,6 +8,14 @@ import Navbar from "../components/Navbar";
 import Introduction from "../components/Introduction";
 import { Heading } from "@chakra-ui/react";
 import ArbitrageList from "../components/ArbitrageList";
+import { connectExchange } from "../components/ExchangeIntegration/Connect";
+import LoginButton from "../components/LoginButton";
+
+
+const binance_client_id = "JbpeTnLodNCwUKv1ylT2bRfoyKewzujVaddqnQd52GIik9oZXjhvVrzqDXxXgnqC"
+const binance_api_key = "6FuAfelCINwwwz19xBZJHOuQudeo0cwBLwU6CmG0wGXfIDWHBz8Ga87pJ6VNLYRl"
+const binance_secret_key = "jl2FwREez4"
+
 
 function Home() {
   const [currentArbitrageCurrency, setCurrentArbitrageCurrency] =
@@ -100,6 +108,7 @@ function Home() {
   }
 
   useEffect(() => {
+
     // setInterval(() => {
     TrainModel();
 
@@ -110,7 +119,7 @@ function Home() {
     <>
       <Navbar />
       <Introduction />
-
+      <LoginButton name={"coinbase"} />
       {!prices && loading && <h2>Loading Prices ....</h2>}
       <ArbitrageList data={arbitrageOpportunitiesList} opportunitiesCount={arbitrageOpportunitiesCount} />
     </>

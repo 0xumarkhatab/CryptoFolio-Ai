@@ -45,14 +45,14 @@ const ArbitrageList = ({ data, opportunitiesCount }) => {
               {opportunitiesCount}
             </Heading>
           </HStack>
-          <Box width={"30vw"}>
+          <Box width={"35vw"}>
             {" "}
             <hr bordercolor="black" borderwidth="61px" />
           </Box>
         </VStack>
 
         {opportunities.length > 0 && (
-          <Wrap paddingTop={"5vh"} spacing={40} width={"50vw"}>
+          <Wrap paddingTop={"5vh"} spacing={20} width={"40vw"}>
             {opportunities.map((key) => (
               <WrapItem key={"wrap " + key}>
                 <CryptoItem

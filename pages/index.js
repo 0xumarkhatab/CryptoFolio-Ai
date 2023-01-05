@@ -11,6 +11,10 @@ import ArbitrageList from "../components/ArbitrageList";
 import { connectExchange } from "../components/ExchangeIntegration/Connect";
 import LoginButton from "../components/LoginButton";
 
+import {
+  Box,
+  
+} from "@chakra-ui/react";
 
 const binance_client_id = "JbpeTnLodNCwUKv1ylT2bRfoyKewzujVaddqnQd52GIik9oZXjhvVrzqDXxXgnqC"
 const binance_api_key = "6FuAfelCINwwwz19xBZJHOuQudeo0cwBLwU6CmG0wGXfIDWHBz8Ga87pJ6VNLYRl"
@@ -119,7 +123,7 @@ function Home() {
     <>
       <Navbar />
       <Introduction />
-      <LoginButton name={"coinbase"} />
+
       {!prices && loading && <h2>Loading Prices ....</h2>}
       <ArbitrageList data={arbitrageOpportunitiesList} opportunitiesCount={arbitrageOpportunitiesCount} />
     </>

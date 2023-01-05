@@ -22,6 +22,7 @@ function PlatformModal({ data, selector }) {
     <>
       <Modal
         size={"6xl"}
+        
         blockScrollOnMount={false}
         isOpen={isOpen}
         onClose={()=>{

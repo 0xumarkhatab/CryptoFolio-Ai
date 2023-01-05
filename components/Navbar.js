@@ -12,13 +12,20 @@ import {
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import NavbarLink from './NavbarLink'
-const Navbar = () => (
-  <Center position={'absolute'} top={'2vh'} left={['2vw', '5vw','5vw', '30vw']} right={['2vw', '5vw','5vw', '30vw']}>
+import { useState } from 'react'
+import ConnectModal from './ConnectModal'
+function Navbar () {
+  const [showConnectModal,setShowConnectModal]=useState();
+
+  return (
+  
+  <>
+
+  <Center zIndex={"10"} position={'absolute'} top={'2vh'} left={['2vw', '5vw','5vw', '30vw']} right={['2vw', '5vw','5vw', '30vw']}>
+    
     <Box
-      border="4px solid"
-      borderRadius="md"
-      animation="gradient"
-      animationduration="3s"
+      border="1px solid"
+      borderRadius="20px"
       bg="black"
       px={4}
       py={2}
@@ -27,16 +34,25 @@ const Navbar = () => (
       <Flex
         align="center"
         justify="space-around"
-        width={['100vw', '80vw', '80vw', '40vw']}
+        width={['90vw', '60vw', '60vw', '40vw']}
       >
         <Link href="#" fontSize="xl" fontWeight="bold" color={'white'}>
-          D-Fi Arbitrage
+          CryptoFolio-Ai
         </Link>
         <NavbarLink title={'learn'} link={'#'} />
         <NavbarLink title={'profit'} link={'#'} />
         <NavbarLink title={'about us'} link={'#'} />
+        <Button onClick={()=>setShowConnectModal(prev=>!prev)}>Connect</Button>
       </Flex>
     </Box>
+
   </Center>
-)
+  {
+        showConnectModal && <ConnectModal ModalStateToggler={setShowConnectModal} />
+      }
+  
+  </>
+  )
+
+}
 export default Navbar

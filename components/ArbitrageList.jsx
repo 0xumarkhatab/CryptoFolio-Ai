@@ -20,7 +20,7 @@ const ArbitrageList = ({ data, opportunitiesCount }) => {
     <Center
       borderTopColor="grey"
       borderTop="40vw"
-      width={"100vw"}
+      width={"100%"}
       height={"fit-content"}
       minH={"100vh"}
       bg="black"

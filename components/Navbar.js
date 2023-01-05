@@ -37,7 +37,7 @@ function Navbar () {
       <Flex
         align="center"
         justify="space-around"
-        width={['90vw', '60vw', '60vw', '40vw']}
+        width={['90vw', '80vw', '60vw', '40vw']}
       >
         <Link href="#" fontSize="md" fontWeight={"700"} color={'white'}>
                 <Img width={"120px"}  src="./logo.png" />  

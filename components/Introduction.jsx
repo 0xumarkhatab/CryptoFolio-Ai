@@ -16,7 +16,8 @@ function Introduction() {
     <>
       <Center
         zIndex={"9"}
-        height={"100vh"}
+        minHeight={"100vh"}
+        height={"fit-content"}
         paddingBottom={"10vh"}
         background={`linear-gradient(rgba(0, 0,0, 0.1), rgba(0, 0, 0, 0.1)),url("./bg9.jpg")`}
         backgroundSize={"cover"}
@@ -32,15 +33,15 @@ function Introduction() {
           }
         />
 
-        <VStack width={["80vw", "60vw", "40vw"]} spacing={5} color={"white"}>
+        <VStack paddingTop={["20vh","15vh","5vh"]} width={["100vw", "80vw", "40vw"]} spacing={5} color={"white"}>
           <Heading
             fontFamily={"sans-serif"}
             fontWeight={"900"}
-            fontSize={["2.5em", "3.5em", "4.5em"]}
+            fontSize={["1.5em", "2.5em","3.5em", "4.5em"]}
           >
             Maximize your crypto returns
           </Heading>
-          <Text fontSize={"16px"}>
+          <Text fontSize={["12px","14px","16px"]}>
             platform for cryptocurrency portfolio management that helps
             investors optimize their investment strategy and maximize their
             returns in the fast-evolving and highly volatile cryptocurrency

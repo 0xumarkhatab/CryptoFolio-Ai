@@ -17,22 +17,20 @@ function PlatformModal({ data, selector }) {
   const [isOpen, setIsOpen] = useState(true);
   let name = data?.name;
 
-
   return (
     <>
       <Modal
         size={"6xl"}
-        
         blockScrollOnMount={false}
         isOpen={isOpen}
-        onClose={()=>{
+        onClose={() => {
           selector(null);
         }}
         bg={"black"}
         color={"white"}
       >
         <ModalOverlay />
-        <ModalContent  >
+        <ModalContent>
           <ModalHeader>Arbitrage Details</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
@@ -50,12 +48,13 @@ function PlatformModal({ data, selector }) {
               onClick={() => {
                 setIsOpen(false);
                 selector(null);
-                
               }}
             >
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
+            <Button variant="solid" colorScheme={"green"}>
+              Trade All
+            </Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

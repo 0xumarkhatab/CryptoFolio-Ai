@@ -40,8 +40,8 @@ function Navbar () {
         width={['90vw', '60vw', '60vw', '40vw']}
       >
         <Link href="#" fontSize="md" fontWeight={"700"} color={'white'}>
-          <HStack >        <Img width={"50px"} src="./logo.png" />  <Text>CryptoFolio-Ai</Text> 
- </HStack>
+                <Img width={"120px"}  src="./logo.png" />  
+ 
         </Link>
         <NavbarLink title={'learn'} link={'#'} />
         <NavbarLink title={'profit'} link={'#'} />

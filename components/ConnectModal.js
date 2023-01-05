@@ -27,9 +27,9 @@ const ConnectModal = ({ModalStateToggler}) => {
         <VStack
           spacing={10}
           height={"80vh"}
-          width={"90vw"}
+          width={"80vw"}
           paddingTop={"5vh"}
-          bg={"cyan.900"}
+          bg={"rgba(0,0,0,0.5)"}
           borderRadius={"20px"}
           
         >

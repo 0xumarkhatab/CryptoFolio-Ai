@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { exchangesList, exchangeColors } from "./data/fetchData";
 import ExchangeConnectButton from "./ExchangeConnectButton";
-const ConnectModal = ({ModalStateToggler}) => {
+const ConnectModal = ({ ModalStateToggler }) => {
   return (
     <>
       <Center
@@ -31,20 +31,26 @@ const ConnectModal = ({ModalStateToggler}) => {
           paddingTop={"5vh"}
           bg={"rgba(0,0,0,0.5)"}
           borderRadius={"20px"}
-          
         >
           <Heading color={"white"}>Connect With</Heading>
           <Wrap width={"70vw"} spacing={2}>
             {exchangesList.map((exchange) => {
               return (
-                <WrapItem>
-                  <ExchangeConnectButton exchange={exchange}/>
+                <WrapItem key={"wrap" + exchange}>
+                  <ExchangeConnectButton
+                    key={"connectButton" + exchange}
+                    exchange={exchange}
+                  />
                 </WrapItem>
               );
             })}
           </Wrap>
-          <Button onClick={()=>ModalStateToggler(false)} colorScheme={"green"}>Close Modal</Button>
-
+          <Button
+            onClick={() => ModalStateToggler(false)}
+            colorScheme={"green"}
+          >
+            Close Modal
+          </Button>
         </VStack>
       </Center>
     </>

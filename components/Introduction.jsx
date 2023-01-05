@@ -32,7 +32,7 @@ function Introduction() {
           }
         />
 
-        <VStack width={["40vw"]} spacing={5} color={"white"}>
+        <VStack width={["80vw", "60vw", "40vw"]} spacing={5} color={"white"}>
           <Heading
             fontFamily={"sans-serif"}
             fontWeight={"900"}

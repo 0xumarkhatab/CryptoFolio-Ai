@@ -11,15 +11,14 @@ import ArbitrageList from "../components/ArbitrageList";
 import { connectExchange } from "../components/ExchangeIntegration/Connect";
 import LoginButton from "../components/LoginButton";
 
-import {
-  Box,
-  
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import Services from "../components/Services";
 
-const binance_client_id = "JbpeTnLodNCwUKv1ylT2bRfoyKewzujVaddqnQd52GIik9oZXjhvVrzqDXxXgnqC"
-const binance_api_key = "6FuAfelCINwwwz19xBZJHOuQudeo0cwBLwU6CmG0wGXfIDWHBz8Ga87pJ6VNLYRl"
-const binance_secret_key = "jl2FwREez4"
-
+const binance_client_id =
+  "JbpeTnLodNCwUKv1ylT2bRfoyKewzujVaddqnQd52GIik9oZXjhvVrzqDXxXgnqC";
+const binance_api_key =
+  "6FuAfelCINwwwz19xBZJHOuQudeo0cwBLwU6CmG0wGXfIDWHBz8Ga87pJ6VNLYRl";
+const binance_secret_key = "jl2FwREez4";
 
 function Home() {
   const [currentArbitrageCurrency, setCurrentArbitrageCurrency] =
@@ -32,7 +31,7 @@ function Home() {
     []
   );
 
-  function findArbitrage(currency,ExchangePrices) {
+  function findArbitrage(currency, ExchangePrices) {
     let opportunitiesList = [];
     let totalOpportunities = 0;
     for (const exchange1 of ExchangePrices) {
@@ -43,7 +42,7 @@ function Home() {
             source: exchange1.exchangeName,
             sink: exchange2.exchangeName,
             price: profit.toFixed(2),
-            currency:currency,
+            currency: currency,
           };
           opportunitiesList.push(opportunity);
 
@@ -96,7 +95,7 @@ function Home() {
     let opportunities = [];
     for (const currency of currenciesArray) {
       let ExchangePrices = _prices[currency];
-      let list = findArbitrage(currency,ExchangePrices);
+      let list = findArbitrage(currency, ExchangePrices);
       opportunities[currency] = list;
     }
     // console.log("full opportunities are ", opportunities);
@@ -112,7 +111,6 @@ function Home() {
   }
 
   useEffect(() => {
-
     // setInterval(() => {
     TrainModel();
 
@@ -123,9 +121,12 @@ function Home() {
     <>
       <Navbar />
       <Introduction />
-
+      {/* <Services /> */}
       {!prices && loading && <h2>Loading Prices ....</h2>}
-      <ArbitrageList data={arbitrageOpportunitiesList} opportunitiesCount={arbitrageOpportunitiesCount} />
+      <ArbitrageList
+        data={arbitrageOpportunitiesList}
+        opportunitiesCount={arbitrageOpportunitiesCount}
+      />
     </>
   );
 }

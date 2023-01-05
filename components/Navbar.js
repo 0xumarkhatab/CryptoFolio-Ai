@@ -9,6 +9,9 @@ import {
   MenuItem,
   Center,
   Icon,
+  Img,
+  Text,
+  HStack
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import NavbarLink from './NavbarLink'
@@ -36,8 +39,9 @@ function Navbar () {
         justify="space-around"
         width={['90vw', '60vw', '60vw', '40vw']}
       >
-        <Link href="#" fontSize="xl" fontWeight="bold" color={'white'}>
-          CryptoFolio-Ai
+        <Link href="#" fontSize="md" fontWeight={"700"} color={'white'}>
+          <HStack >        <Img width={"50px"} src="./logo.png" />  <Text>CryptoFolio-Ai</Text> 
+ </HStack>
         </Link>
         <NavbarLink title={'learn'} link={'#'} />
         <NavbarLink title={'profit'} link={'#'} />

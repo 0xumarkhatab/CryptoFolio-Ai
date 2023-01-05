@@ -49,7 +49,7 @@ const ConnectModal = ({ ModalStateToggler }) => {
             onClick={() => ModalStateToggler(false)}
             colorScheme={"green"}
           >
-            Close Modal
+            Go Back
           </Button>
         </VStack>
       </Center>
